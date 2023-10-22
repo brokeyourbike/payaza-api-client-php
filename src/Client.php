@@ -8,6 +8,7 @@ namespace BrokeYourBike\Payaza;
 
 use GuzzleHttp\ClientInterface;
 use BrokeYourBike\ResolveUri\ResolveUriTrait;
+use BrokeYourBike\Payaza\Responses\PayoutStatusResponse;
 use BrokeYourBike\Payaza\Responses\PayoutResponse;
 use BrokeYourBike\Payaza\Interfaces\TransactionInterface;
 use BrokeYourBike\Payaza\Interfaces\ConfigInterface;
@@ -58,7 +59,7 @@ class Client implements HttpClientInterface
                     'transaction_pin' => $this->config->getTransactionPin(),
                     'payout_beneficiaries' => [
                         'credit_amount' => $transaction->getAmount(),
-                        'account_number' => $transaction->getAccountNumber(),
+                        'account_number' => $transaction->getBankAccount(),
                         'account_name' => $transaction->getRecipientName(),
                         'bank_code' => $transaction->getBankCode(),
                         'narration' => $transaction->getReference(),
@@ -72,7 +73,7 @@ class Client implements HttpClientInterface
         return new PayoutResponse($response);
     }
 
-    public function payoutStatus(string $reference): PayoutResponse
+    public function payoutStatus(string $reference): PayoutStatusResponse
     {
         $tokenEncoded = base64_encode($this->config->getToken());
 
@@ -94,6 +95,6 @@ class Client implements HttpClientInterface
         ];
 
         $response = $this->httpClient->request(HttpMethodEnum::POST->value, $this->config->getUrl(), $options);
-        return new PayoutResponse($response);
+        return new PayoutStatusResponse($response);
     }
 }

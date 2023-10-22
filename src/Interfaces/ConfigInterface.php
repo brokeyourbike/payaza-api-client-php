@@ -6,8 +6,6 @@
 
 namespace BrokeYourBike\Payaza\Interfaces;
 
-use BrokeYourBike\Payaza\Enums\EntityTypeEnum;
-
 /**
  * @author Ivan Stasiuk <ivan@stasi.uk>
  */

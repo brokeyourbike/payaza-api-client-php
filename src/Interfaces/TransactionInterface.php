@@ -13,7 +13,7 @@ interface TransactionInterface
 {
     public function getReference(): string;
     public function getAmount(): float;
-    public function getAccountNumber(): string;
+    public function getBankAccount(): string;
     public function getBankCode(): string;
     public function getRecipientName(): string;
 }

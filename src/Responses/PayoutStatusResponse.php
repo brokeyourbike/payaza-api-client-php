@@ -12,11 +12,11 @@ use BrokeYourBike\DataTransferObject\JsonResponse;
 /**
  * @author Ivan Stasiuk <ivan@stasi.uk>
  */
-class PayoutResponse extends JsonResponse
+class PayoutStatusResponse extends JsonResponse
 {
     public ?string $response_code;
     public ?string $response_message;
-    #[MapFrom('response_content.response_status')]
+    #[MapFrom('response_content.transaction_status')]
     public ?string $transaction_status;
 }
 

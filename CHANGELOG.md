@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0](https://www.github.com/brokeyourbike/payaza-api-client-php/compare/v0.1.0...v0.2.0) (2023-10-22)
+
+
+### Features
+
+* source model ([e16794c](https://www.github.com/brokeyourbike/payaza-api-client-php/commit/e16794c18f2bfe0dcdba61510b13534d034d7cfd))
+
+
+### Miscellaneous Chores
+
+* license ([63a537b](https://www.github.com/brokeyourbike/payaza-api-client-php/commit/63a537bbfee4e49f08c35f4ca051d8ec11bdd9d7))
+
 ## 0.1.0 (2023-10-22)
 
 

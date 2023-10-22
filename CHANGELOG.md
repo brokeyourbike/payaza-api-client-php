@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.1](https://www.github.com/brokeyourbike/payaza-api-client-php/compare/v0.1.0...v0.1.1) (2023-10-22)
+
+
+### Miscellaneous Chores
+
+* license ([63a537b](https://www.github.com/brokeyourbike/payaza-api-client-php/commit/63a537bbfee4e49f08c35f4ca051d8ec11bdd9d7))
+
 ## 0.1.0 (2023-10-22)
 
 

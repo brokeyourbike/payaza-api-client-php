@@ -16,7 +16,7 @@ use BrokeYourBike\HasSourceModel\HasSourceModelTrait;
 /**
  * @author Ivan Stasiuk <ivan@stasi.uk>
  */
-class FundTransferClientTest extends TestCase
+class ClientTest extends TestCase
 {
     /** @test */
     public function it_implemets_http_client_interface(): void

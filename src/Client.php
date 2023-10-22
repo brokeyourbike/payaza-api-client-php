@@ -15,6 +15,7 @@ use BrokeYourBike\Payaza\Interfaces\ConfigInterface;
 use BrokeYourBike\HttpEnums\HttpMethodEnum;
 use BrokeYourBike\HttpClient\HttpClientTrait;
 use BrokeYourBike\HttpClient\HttpClientInterface;
+use BrokeYourBike\HasSourceModel\SourceModelInterface;
 use BrokeYourBike\HasSourceModel\HasSourceModelTrait;
 
 /**
@@ -68,6 +69,10 @@ class Client implements HttpClientInterface
                 ],
             ],
         ];
+
+        if ($transaction instanceof SourceModelInterface){
+            $options[\BrokeYourBike\HasSourceModel\Enums\RequestOptions::SOURCE_MODEL] = $transaction;
+        }
 
         $response = $this->httpClient->request(HttpMethodEnum::POST->value, $this->config->getUrl(), $options);
         return new PayoutResponse($response);

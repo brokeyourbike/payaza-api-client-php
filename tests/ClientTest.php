@@ -36,7 +36,7 @@ class ClientTest extends TestCase
     /** @test */
     public function it_uses_http_client_trait(): void
     {
-        $usedTraits = class_uses(FundTransferClient::class);
+        $usedTraits = class_uses(Client::class);
 
         $this->assertArrayHasKey(HttpClientTrait::class, $usedTraits);
     }
@@ -44,7 +44,7 @@ class ClientTest extends TestCase
     /** @test */
     public function it_uses_resolve_uri_trait(): void
     {
-        $usedTraits = class_uses(FundTransferClient::class);
+        $usedTraits = class_uses(Client::class);
 
         $this->assertArrayHasKey(ResolveUriTrait::class, $usedTraits);
     }
@@ -52,7 +52,7 @@ class ClientTest extends TestCase
     /** @test */
     public function it_uses_has_source_model_trait(): void
     {
-        $usedTraits = class_uses(FundTransferClient::class);
+        $usedTraits = class_uses(Client::class);
 
         $this->assertArrayHasKey(HasSourceModelTrait::class, $usedTraits);
     }

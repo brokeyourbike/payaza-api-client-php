@@ -30,4 +30,4 @@ $apiClient->payout($transaction);
 - [Ivan Stasiuk](https://github.com/brokeyourbike) | [Twitter](https://twitter.com/brokeyourbike) | [LinkedIn](https://www.linkedin.com/in/brokeyourbike) | [stasi.uk](https://stasi.uk)
 
 ## License
-[Mozilla Public License v2.0](https://github.com/brokeyourbike/payaza-api-client-php/blob/main/LICENSE)
+[BSD-3-Clause License](https://github.com/brokeyourbike/payaza-api-client-php/blob/main/LICENSE)

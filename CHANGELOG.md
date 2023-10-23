@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.2.2](https://www.github.com/brokeyourbike/payaza-api-client-php/compare/v0.2.1...v0.2.2) (2023-10-23)
+
+
+### Bug Fixes
+
+* it's an array ([a2a1b24](https://www.github.com/brokeyourbike/payaza-api-client-php/commit/a2a1b244be7fbbf949fd52e286a87556284a0a0d))
+
 ### [0.2.1](https://www.github.com/brokeyourbike/payaza-api-client-php/compare/v0.2.0...v0.2.1) (2023-10-23)
 
 

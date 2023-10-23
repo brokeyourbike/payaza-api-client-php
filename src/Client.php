@@ -58,14 +58,14 @@ class Client implements HttpClientInterface
                     'request_class' => 'PayoutFromPayazaAccountRequest',
                     'payout_amount' => $transaction->getAmount(),
                     'transaction_pin' => $this->config->getTransactionPin(),
-                    'payout_beneficiaries' => [
+                    'payout_beneficiaries' => [[
                         'credit_amount' => $transaction->getAmount(),
                         'account_number' => $transaction->getBankAccount(),
                         'account_name' => $transaction->getRecipientName(),
                         'bank_code' => $transaction->getBankCode(),
                         'narration' => $transaction->getReference(),
                         'transaction_reference' => $transaction->getReference(),
-                    ],
+                    ]],
                 ],
             ],
         ];

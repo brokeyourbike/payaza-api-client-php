@@ -79,7 +79,7 @@ class Client implements HttpClientInterface
             $options[\BrokeYourBike\HasSourceModel\Enums\RequestOptions::SOURCE_MODEL] = $transaction;
         }
 
-        $uri = (string) $this->resolveUriFor($this->config->getUrl(), "/payout-receptor/payout");
+        $uri = (string) $this->resolveUriFor($this->config->getUrl(), "payout-receptor/payout");
         $response = $this->httpClient->request(HttpMethodEnum::POST->value, $uri, $options);
         return new PayoutResponse($response);
     }
@@ -96,7 +96,7 @@ class Client implements HttpClientInterface
             ],
         ];
 
-        $uri = (string) $this->resolveUriFor($this->config->getUrl(), "/payaza-account/api/v1/mainaccounts/merchant/transaction/{$reference}");
+        $uri = (string) $this->resolveUriFor($this->config->getUrl(), "payaza-account/api/v1/mainaccounts/merchant/transaction/{$reference}");
         $response = $this->httpClient->request(HttpMethodEnum::GET->value, $uri, $options);
         return new PayoutStatusResponse($response);
     }

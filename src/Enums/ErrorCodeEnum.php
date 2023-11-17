@@ -11,6 +11,7 @@ namespace BrokeYourBike\Payaza\Enums;
  */
 enum ErrorCodeEnum: string
 {
+    case OK = '00';
     case SUCCESSFUL = '200';
     case FAILED = '500';
 }

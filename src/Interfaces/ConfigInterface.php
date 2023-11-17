@@ -13,5 +13,10 @@ interface ConfigInterface
 {
     public function getUrl(): string;
     public function getToken(): string;
+    public function getTenantId(): string;
     public function getTransactionPin(): string;
+    public function getAccountReference(): string;
+    public function getSenderName(): string;
+    public function getSenderPhone(): string;
+    public function getSenderAddress(): string;
 }

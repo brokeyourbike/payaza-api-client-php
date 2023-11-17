@@ -14,9 +14,13 @@ use BrokeYourBike\DataTransferObject\JsonResponse;
  */
 class PayoutStatusResponse extends JsonResponse
 {
+    #[MapFrom('data.responseCode')]
     public ?string $response_code;
+
+    #[MapFrom('data.responseMessage')]
     public ?string $response_message;
-    #[MapFrom('response_content.transaction_status')]
+    
+    #[MapFrom('data.transactionStatus')]
     public ?string $transaction_status;
 }
 

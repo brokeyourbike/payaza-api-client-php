@@ -48,24 +48,29 @@ class Client implements HttpClientInterface
             \GuzzleHttp\RequestOptions::HEADERS => [
                 'Accept' => 'application/json',
                 'Authorization' => "Payaza {$tokenEncoded}",
+                'X-TenantID' => $this->config->getTenantId(),
             ],
             \GuzzleHttp\RequestOptions::JSON => [
-                'service_type' => 'Account',
+                'transaction_type' => 'nuban',
                 'service_payload' => [
-                    'request_application' => 'Payaza',
-                    'application_module' => 'USER_MODULE',
-                    'application_version' => '1.0.0',
-                    'request_class' => 'PayoutFromPayazaAccountRequest',
                     'payout_amount' => $transaction->getAmount(),
                     'transaction_pin' => $this->config->getTransactionPin(),
-                    'payout_beneficiaries' => [[
-                        'credit_amount' => $transaction->getAmount(),
-                        'account_number' => $transaction->getBankAccount(),
-                        'account_name' => $transaction->getRecipientName(),
-                        'bank_code' => $transaction->getBankCode(),
-                        'narration' => $transaction->getReference(),
-                        'transaction_reference' => $transaction->getReference(),
-                    ]],
+                    'account_reference' => $this->config->getAccountReference(),
+                    'payout_beneficiaries' => [
+                        [
+                            'credit_amount' => $transaction->getAmount(),
+                            'account_number' => $transaction->getBankAccount(),
+                            'account_name' => $transaction->getRecipientName(),
+                            'bank_code' => $transaction->getBankCode(),
+                            'narration' => $transaction->getReference(),
+                            'transaction_reference' => $transaction->getReference(),
+                            'sender' => [
+                                'sender_name' => $this->config->getSenderName(),
+                                'sender_phone_number' => $this->config->getSenderPhone(),
+                                'sender_address' => $this->config->getSenderAddress(),
+                            ],
+                        ]
+                    ],
                 ],
             ],
         ];
@@ -74,7 +79,8 @@ class Client implements HttpClientInterface
             $options[\BrokeYourBike\HasSourceModel\Enums\RequestOptions::SOURCE_MODEL] = $transaction;
         }
 
-        $response = $this->httpClient->request(HttpMethodEnum::POST->value, $this->config->getUrl(), $options);
+        $uri = (string) $this->resolveUriFor($this->config->getUrl(), "/payout-receptor/payout");
+        $response = $this->httpClient->request(HttpMethodEnum::POST->value, $uri, $options);
         return new PayoutResponse($response);
     }
 
@@ -86,20 +92,12 @@ class Client implements HttpClientInterface
             \GuzzleHttp\RequestOptions::HEADERS => [
                 'Accept' => 'application/json',
                 'Authorization' => "Payaza {$tokenEncoded}",
-            ],
-            \GuzzleHttp\RequestOptions::JSON => [
-                'service_type' => 'Account',
-                'service_payload' => [
-                    'request_application' => 'Payaza',
-                    'application_module' => 'USER_MODULE',
-                    'application_version' => '1.0.0',
-                    'request_class' => 'FetchPayazaAccountTransactionRequest',
-                    'transaction_reference' => $reference,
-                ],
+                'X-TenantID' => $this->config->getTenantId(),
             ],
         ];
 
-        $response = $this->httpClient->request(HttpMethodEnum::POST->value, $this->config->getUrl(), $options);
+        $uri = (string) $this->resolveUriFor($this->config->getUrl(), "/payaza-account/api/v1/mainaccounts/merchant/transaction/{$reference}");
+        $response = $this->httpClient->request(HttpMethodEnum::GET->value, $uri, $options);
         return new PayoutStatusResponse($response);
     }
 }

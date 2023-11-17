@@ -31,19 +31,25 @@ class PayoutStatusTest extends TestCase
         $mockedResponse->method('getStatusCode')->willReturn(200);
         $mockedResponse->method('getBody')
             ->willReturn('{
-                "response_code": 200,
-                "response_message": "Request successful.",
-                "response_content": {
-                    "transaction_status": "ESCROW_SUCCESS",
-                    "transaction_status_description": null,
-                    "transaction_reference": "REF1234",
-                    "narration": "Payout",
-                    "session_id": null,
-                    "transaction_date": "2023-10-13T16:33:37.838328",
-                    "to_account": "0690767319",
-                    "account_name": "John Doe",
-                    "transaction_amount": "100.00",
-                    "fee_amount": "0.00"
+                "message": "Transaction fetched",
+                "status": true,
+                "data": {
+                    "transactionDateTime": "2023-11-17T15:57:59.667599",
+                    "transactionReference": "REF1234",
+                    "creditAccount": "782634976",
+                    "bankCode": "000015",
+                    "beneficiaryName": "John Doe",
+                    "transactionAmount": 100.00,
+                    "fee": 30.00,
+                    "sessionId": "1278948127348172340891237401892374",
+                    "transactionStatus": "ESCROW_SUCCESS",
+                    "narration": "REF1234",
+                    "transactionType": "DEBIT",
+                    "responseMessage": "Approved or Completely Successful",
+                    "responseCode": "00",
+                    "currency": "NGN",
+                    "balanceBefore": 500.00,
+                    "balanceAfter": 370.00
                 }
             }');
 
@@ -59,7 +65,7 @@ class PayoutStatusTest extends TestCase
 
         $requestResult = $api->payoutStatus('REF1234');
         $this->assertInstanceOf(PayoutStatusResponse::class, $requestResult);
-        $this->assertEquals(ErrorCodeEnum::SUCCESSFUL->value, $requestResult->response_code);
+        $this->assertEquals(ErrorCodeEnum::OK->value, $requestResult->response_code);
         $this->assertEquals(TransactionStatusEnum::ESCROW_SUCCESS->value, $requestResult->transaction_status);
     }
 }

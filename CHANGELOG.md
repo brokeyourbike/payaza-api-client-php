@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.3.1](https://www.github.com/brokeyourbike/payaza-api-client-php/compare/v0.3.0...v0.3.1) (2023-11-17)
+
+
+### Bug Fixes
+
+* path ([a232b6b](https://www.github.com/brokeyourbike/payaza-api-client-php/commit/a232b6bf5f8dff7da9e064af0fbe4f9ec0cbb8f4))
+
 ## [0.3.0](https://www.github.com/brokeyourbike/payaza-api-client-php/compare/v0.2.2...v0.3.0) (2023-11-17)
 
 

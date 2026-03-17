@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.5.0](https://www.github.com/brokeyourbike/payaza-api-client-php/compare/v0.4.0...v0.5.0) (2026-03-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* model
+
+### Bug Fixes
+
+* model ([e090e6c](https://www.github.com/brokeyourbike/payaza-api-client-php/commit/e090e6c472efe788ea2f59bf11e897c3b0b2d362))
+
 ## [0.4.0](https://www.github.com/brokeyourbike/payaza-api-client-php/compare/v0.3.1...v0.4.0) (2026-03-17)
 
 

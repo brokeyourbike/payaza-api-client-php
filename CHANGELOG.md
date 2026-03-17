@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.4.0](https://www.github.com/brokeyourbike/payaza-api-client-php/compare/v0.3.1...v0.4.0) (2026-03-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* source
+
+### Bug Fixes
+
+* remove lock ([92d7552](https://www.github.com/brokeyourbike/payaza-api-client-php/commit/92d75527be2602fdaf7ce63501ea2d08f09041c3))
+* source ([64008a5](https://www.github.com/brokeyourbike/payaza-api-client-php/commit/64008a5e7777d1db302d24d866008940eeb9d82e))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump nesbot/carbon from 2.71.0 to 2.72.6 ([2b0a600](https://www.github.com/brokeyourbike/payaza-api-client-php/commit/2b0a600c5c5abf08a9aadb3abc56fed98bbf7109))
+* **deps-dev:** bump phpunit/phpunit from 9.6.13 to 9.6.33 ([188fca8](https://www.github.com/brokeyourbike/payaza-api-client-php/commit/188fca81c1a1b66ff212a450ca565544520cf9da))
+
 ### [0.3.1](https://www.github.com/brokeyourbike/payaza-api-client-php/compare/v0.3.0...v0.3.1) (2023-11-17)
 
 

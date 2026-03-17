@@ -15,7 +15,6 @@ use BrokeYourBike\Payaza\Interfaces\ConfigInterface;
 use BrokeYourBike\HttpEnums\HttpMethodEnum;
 use BrokeYourBike\HttpClient\HttpClientTrait;
 use BrokeYourBike\HttpClient\HttpClientInterface;
-use BrokeYourBike\HasSourceModel\SourceModelInterface;
 use BrokeYourBike\HasSourceModel\HasSourceModelTrait;
 
 /**
@@ -75,8 +74,8 @@ class Client implements HttpClientInterface
             ],
         ];
 
-        if ($transaction instanceof SourceModelInterface){
-            $options[\BrokeYourBike\HasSourceModel\Enums\RequestOptions::SOURCE_MODEL] = $transaction;
+        if ($this->getSourceModel() != null){
+            $options[\BrokeYourBike\HasSourceModel\Enums\RequestOptions::SOURCE_MODEL] = $this->getSourceModel();
         }
 
         $uri = (string) $this->resolveUriFor($this->config->getUrl(), "payout-receptor/payout");
@@ -95,6 +94,10 @@ class Client implements HttpClientInterface
                 'X-TenantID' => $this->config->getTenantId(),
             ],
         ];
+
+        if ($this->getSourceModel() != null){
+            $options[\BrokeYourBike\HasSourceModel\Enums\RequestOptions::SOURCE_MODEL] = $this->getSourceModel();
+        }
 
         $uri = (string) $this->resolveUriFor($this->config->getUrl(), "payaza-account/api/v1/mainaccounts/merchant/transaction/{$reference}");
         $response = $this->httpClient->request(HttpMethodEnum::GET->value, $uri, $options);
